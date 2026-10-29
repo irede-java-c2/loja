@@ -31,19 +31,20 @@ public class Produto {
     
     @Column(name = "quantidade_estoque", nullable = false)
     @ColumnDefault("0")
-    private Integer quantidadeEstoque;
+    private Integer quantidadeEstoque = 0;
     
     @Column(name = "ativo", nullable = false)
     @ColumnDefault("true")
-    private Boolean ativo;
+    private Boolean ativo = true;
+    
+    protected Produto(){
+        
+    }
 
-    public Produto(String nome, String descricao, String sku, BigDecimal preco, Integer quantidadeEstoque, Boolean ativo) {
+    public Produto(String nome, String sku, BigDecimal preco) {
         this.nome = nome;
-        this.descricao = descricao;
         this.sku = sku;
         this.preco = preco;
-        this.quantidadeEstoque = quantidadeEstoque;
-        this.ativo = ativo;
     }
 
     public Long getId() {
@@ -100,6 +101,12 @@ public class Produto {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+    
+    @Override
+    public String toString() {
+        return "Produto{id=%d, nome='%s', sku='%s', preco=%s, estoque=%d, ativo=%s, descricao='%s'}"
+                .formatted(id, nome, sku, preco, quantidadeEstoque, ativo, descricao);
     }
     
 }
