@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd"
+             version="3.2">
+    <!-- nome das unidades de persistencia -->
+    <persistence-unit name="ormPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>br.org.irede.loja.model.Produto</class>
+        <properties>
+            <!-- acesso ao banco -->
+            <property name="jakarta.persistence.jdbc.driver"   value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url"      value="jdbc:mysql://localhost:3306/loja?createDatabaseIfNotExist=true&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=America/Fortaleza"/>
+            <property name="jakarta.persistence.jdbc.user"     value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="root"/>
+            <!-- apagar e criar o banco, update caos queira so atualizar -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <!-- mostrar o sql executado -->
+            <property name="hibernate.show_sql"      value="true"/>
+            <property name="hibernate.format_sql"    value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
